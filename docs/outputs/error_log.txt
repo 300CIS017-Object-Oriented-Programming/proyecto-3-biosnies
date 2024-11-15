@@ -1,0 +1,38 @@
+2024-11-14 11:25:34,841 - ERROR - Error: Ocurrió un error: [WinError 3] El sistema no puede encontrar la ruta especificada: 'docs/inputs'
+2024-11-14 11:25:34,841 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:28:01,057 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:40:20,577 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:41:59,521 - ERROR - Error: Ocurrió un error: 'GestorDatos' object has no attribute 'mostrar_archivos_disponibles'
+2024-11-14 11:41:59,527 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:42:06,275 - ERROR - Error: Ocurrió un error: 'GestorDatos' object has no attribute 'mostrar_archivos_disponibles'
+2024-11-14 11:42:06,275 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:43:20,228 - ERROR - Error: Ocurrió un error: 'GestorDatos' object has no attribute 'mostrar_archivos_disponibles'
+2024-11-14 11:43:20,228 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:43:51,356 - ERROR - Error: Ocurrió un error: 'GestorDatos' object has no attribute 'mostrar_archivos_disponibles'
+2024-11-14 11:43:51,356 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:45:37,246 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 11:50:50,121 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:02:11,611 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:07:09,606 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:11:44,063 - ERROR - Error: Ocurrió un error: [Errno 13] Permission denied: 'C:\\Users\\Lenovo\\Desktop\\GIT\\proyecto-3-biosnies\\src\\../docs/inputs\\~$admitidos2020.xlsx'
+2024-11-14 12:11:44,063 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:21:33,473 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:24:56,219 - ERROR - Error: Ocurrió un error: expected string or bytes-like object, got 'int'
+2024-11-14 12:24:56,222 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:26:46,913 - ERROR - Error: Ocurrió un error: Passed header=[9], len of 1, but only 8 lines in file (sheet: 0)
+2024-11-14 12:26:46,916 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:28:14,266 - ERROR - Error: Ocurrió un error: Passed header=[9], len of 1, but only 8 lines in file (sheet: 0)
+2024-11-14 12:28:14,270 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:30:09,486 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:30:16,797 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:31:20,894 - ERROR - Error: Ocurrió un error: 'GestorFiltros' object has no attribute 'seleccionar_programas'
+2024-11-14 12:37:01,791 - ERROR - Error en selección de programas: 'str' object has no attribute 'nombre'
+2024-11-14 12:37:01,792 - ERROR - Error en análisis de datos: Analizador.calcular_estadisticas() missing 1 required positional argument: 'datos'
+2024-11-14 12:37:01,813 - ERROR - Error en gráfico de comparación de género: Value of 'x' is not the name of a column in 'data_frame'. Expected one of [] but received: programa
+2024-11-14 12:42:19,324 - ERROR - Error en selección de programas: 'str' object has no attribute 'nombre'
+2024-11-14 12:42:19,325 - ERROR - Error en análisis de datos: 'Visualizador' object has no attribute 'configurar_datos_analizados'
+2024-11-14 12:42:19,346 - ERROR - Error en gráfico de comparación de género: Value of 'x' is not the name of a column in 'data_frame'. Expected one of [] but received: programa
+2024-11-14 12:53:05,797 - ERROR - Error en selección de programas: 'str' object has no attribute 'nombre'
+2024-11-14 12:53:05,798 - ERROR - Error en análisis de datos: 'Visualizador' object has no attribute 'configurar_datos_analizados'
+2024-11-14 12:53:05,821 - ERROR - Error en gráfico de comparación de género: Value of 'x' is not the name of a column in 'data_frame'. Expected one of [] but received: programa
+2024-11-14 13:03:14,796 - ERROR - Error en gráfico de comparación de género: Value of 'x' is not the name of a column in 'data_frame'. Expected one of [] but received: programa
