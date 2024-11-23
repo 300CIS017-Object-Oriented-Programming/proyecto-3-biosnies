@@ -2,9 +2,30 @@ import pandas as pd
 import os
 from manejador_excepciones import ManejadorExcepciones
 
-
 class GestorDatos:
+    """
+    Clase para gestionar los datos de los archivos Excel.
+
+    Métodos
+    -------
+    normalizar_columnas(df)
+        Normaliza los nombres de las columnas de un DataFrame.
+    load_data()
+        Carga los datos de los archivos Excel en el directorio especificado.
+    rename_columns(df)
+        Renombra las columnas de un DataFrame según los sinónimos definidos.
+    get_optional_columns(file_name)
+        Obtiene las columnas opcionales basadas en el nombre del archivo.
+    get_available_columns(data)
+        Obtiene todas las columnas disponibles en los datos cargados.
+    show_column_info(data)
+        Muestra información de las columnas de los DataFrames cargados.
+    buscar_por_palabra_clave(palabra_clave, dataframes)
+        Busca programas académicos por palabra clave en los DataFrames cargados.
+    """
+
     def __init__(self, ruta_directorio):
+
         self.ruta_directorio = ruta_directorio
 
         self.min_required_columns = [
@@ -68,12 +89,32 @@ class GestorDatos:
         }
 
     def normalizar_columnas(self, df):
+        """
+        Normaliza los nombres de las columnas de un DataFrame.
+
+        Parámetros
+        ----------
+        df : DataFrame
+            DataFrame cuyas columnas serán normalizadas.
+
+        Devuelve
+        -------
+        DataFrame
+            DataFrame con los nombres de las columnas normalizados.
+        """
         df.columns = df.columns.str.lower().str.replace(" ", "_")
         return df
 
     @ManejadorExcepciones.manejar_errores
-
     def load_data(self):
+        """
+        Carga los datos de los archivos Excel en el directorio especificado.
+
+        Devuelve
+        -------
+        dict
+            Diccionario donde las claves son los nombres de los archivos y los valores son los DataFrames cargados.
+        """
         data = {}
         for file in os.listdir(self.ruta_directorio):
             if file.endswith('.xlsx'):
@@ -99,6 +140,19 @@ class GestorDatos:
         return data
 
     def rename_columns(self, df):
+        """
+        Renombra las columnas de un DataFrame según los sinónimos definidos.
+
+        Parámetros
+        ----------
+        df : DataFrame
+            DataFrame cuyas columnas serán renombradas.
+
+        Devuelve
+        -------
+        DataFrame
+            DataFrame con las columnas renombradas.
+        """
         new_columns = {}
         for col in df.columns:
             col_lower = col.lower().strip().replace(" ", "_")
@@ -111,24 +165,73 @@ class GestorDatos:
         return df.rename(columns=new_columns)
 
     def get_optional_columns(self, file_name):
+        """
+        Obtiene las columnas opcionales basadas en el nombre del archivo.
+
+        Parámetros
+        ----------
+        file_name : str
+            Nombre del archivo.
+
+        Devuelve
+        -------
+        list
+            Lista de columnas opcionales.
+        """
         for key, cols in self.optional_columns.items():
             if key in file_name.lower():
                 return cols
         return []
 
     def get_available_columns(self, data):
+        """
+        Obtiene todas las columnas disponibles en los datos cargados.
+
+        Parámetros
+        ----------
+        data : dict
+            Diccionario de DataFrames cargados.
+
+        Devuelve
+        -------
+        set
+            Conjunto de todas las columnas disponibles.
+        """
         columns = set()
         for _, df in data.items():
             columns.update(df.columns)
         return columns
 
     def show_column_info(self, data):
+        """
+        Muestra información de las columnas de los DataFrames cargados.
+
+        Parámetros
+        ----------
+        data : dict
+            Diccionario de DataFrames cargados.
+        """
         for name, df in data.items():
             print(f"\nColumnas en {name}:")
             for column in df.columns:
                 print(f"- {column}")
 
     def buscar_por_palabra_clave(self, palabra_clave, dataframes):
+        """
+        Busca programas académicos por palabra clave en los DataFrames cargados.
+
+        Parámetros
+        ----------
+        palabra_clave : str
+            Palabra clave para buscar en los programas académicos.
+        dataframes : dict
+            Diccionario de DataFrames cargados.
+
+        Devuelve
+        -------
+        DataFrame
+            DataFrame con los programas académicos que coinciden con la palabra clave.
+        """
         datos_combinados = pd.concat(dataframes.values(), ignore_index=True)
 
         if 'programa_academico' not in datos_combinados.columns:
@@ -137,4 +240,3 @@ class GestorDatos:
         programas_filtrados = datos_combinados[datos_combinados['programa_academico']
         .str.contains(palabra_clave, case=False, na=False)]
         return programas_filtrados
-
