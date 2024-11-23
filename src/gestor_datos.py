@@ -16,7 +16,8 @@ class GestorDatos:
             "admitidos": ["admitidos"],
             "graduados": ["graduados"],
             "inscritos": ["inscritos"],
-            "matriculados": ["matriculados", "primer_curso"]
+            "total_matriculados": ["matriculados"],
+            "nuevos_matriculados": ["primer_curso"]
         }
 
         # Diccionario de sinónimos
@@ -59,11 +60,11 @@ class GestorDatos:
             "sexo": ["SEXO"],
             "anio": ["AÑO"],
             "semestre": ["SEMESTRE"],
-            "matriculados": ["MATRICULADOS", "MATRICULADOS PRIMER CURSO"],
+            "total_matriculados": ["MATRICULADOS"],
             "inscritos": ["INSCRITOS"],
             "graduados": ["GRADUADOS"],
             "admitidos": ["ADMITIDOS"],
-            "primer_curso": ["PRIMER CURSO"]
+            "nuevos_matriculados": ["MATRICULADOS PRIMER CURSO","PRIMER CURSO"],
         }
 
     def normalizar_columnas(self, df):
@@ -136,3 +137,4 @@ class GestorDatos:
         programas_filtrados = datos_combinados[datos_combinados['programa_academico']
         .str.contains(palabra_clave, case=False, na=False)]
         return programas_filtrados
+
