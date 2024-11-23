@@ -36,7 +36,7 @@ class Visualizador:
 
         fig = px.bar(
             self.datos_analizados,
-            x="programa",  # Cambia 'programa_academico' por 'programa'
+            x="programa",
             y="graduados",
             title="Comparación de Graduados por Programa",
             labels={"programa": "Programa", "graduados": "Número de Graduados"}

@@ -96,3 +96,11 @@ if not resultados.empty:
         file_name="resultados.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
+    #guardar con json
+    resultados_json = resultados.to_json(orient="records", indent=4)
+    st.download_button(
+        label="Descargar resultados en JSON",
+        data=resultados_json,
+        file_name="resultados.json",
+        mime="application/json"
+    )
