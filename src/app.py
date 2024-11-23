@@ -73,8 +73,17 @@ else:
 st.title("Visualización de Datos")
 if not resultados.empty:
     visualizador.establecer_datos_analizados(resultados)
-    st.plotly_chart(visualizador.graficar_tendencias_inscripcion(), use_container_width=True)
-    st.plotly_chart(visualizador.graficar_comparacion_genero(), use_container_width=True)
+    tendencias_fig = visualizador.graficar_tendencias_inscripcion()
+    if tendencias_fig:
+        st.plotly_chart(tendencias_fig, use_container_width=True)
+    # Agregar nuevas visualizaciones
+    modalidad_fig = visualizador.graficar_comparacion_modalidad()
+    if modalidad_fig:
+        st.plotly_chart(modalidad_fig, use_container_width=True)
+
+    genero_fig = visualizador.graficar_comparacion_genero()
+    if genero_fig:
+        st.plotly_chart(genero_fig, use_container_width=True)
 
 if not resultados.empty:
     buffer = io.BytesIO()  # Usa un buffer para manejar la conversión
