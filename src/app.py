@@ -134,3 +134,11 @@ if not resultados.empty:
         file_name="resultados.json",
         mime="application/json"
     )
+    # Guardar como CSV
+    csv_data = resultados.to_csv(index=False).encode('utf-8')
+    st.download_button(
+    label="Descargar en formato CSV",
+    data=csv_data,
+    file_name="resultados.csv",
+    mime="text/csv"
+)
