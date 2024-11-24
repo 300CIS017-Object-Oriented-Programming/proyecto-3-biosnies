@@ -121,3 +121,9 @@ proyecto-snies/
           Analizador *-- Programa : "Gestión de programas"
           Analizador --> Visualizador : "Entrega datos analizados"
 ```
+###**Video demostrativo**
+
+
+
+https://github.com/user-attachments/assets/e3841768-ad70-4ade-8e36-aa12587e4c36
+
