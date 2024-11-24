@@ -48,26 +48,34 @@ if not dataframes:
 
 # Título de la barra lateral para la sección de filtrado de programas
 st.sidebar.title("Filtrar Programas")
-# Widget de entrada de texto en la barra lateral para introducir una palabra clave para filtrar programas
-palabra_clave = st.sidebar.text_input("Introduce una palabra clave para filtrar programas:")
+
+# Widget de entrada de texto en la barra lateral para introducir palabras clave separadas por comas
+palabras_clave_input = st.sidebar.text_area(
+    "Introduce palabras clave separadas por comas:",
+    placeholder="Ejemplo: Ingeniería, Medicina, Derecho"
+)
+
+# Procesar palabras clave (remover espacios extra y duplicados)
+palabras_clave = [palabra.strip() for palabra in palabras_clave_input.split(",") if palabra.strip()]
+palabras_clave = list(set(palabras_clave))  # Eliminar duplicados
 
 # DataFrame para almacenar los programas filtrados y lista para almacenar los programas seleccionados
 programas_filtrados = pd.DataFrame()
 programas_seleccionados = []
 
-# Si se introduce una palabra clave y se cargan dataframes, filtra los programas
-if palabra_clave and dataframes:
+# Si se introducen palabras clave y se cargan dataframes, filtra los programas
+if palabras_clave and dataframes:
     try:
-        # Filtra los programas usando la palabra clave y almacena en programas_filtrados
-        programas_filtrados = gestor_datos.buscar_por_palabra_clave(palabra_clave, dataframes)
+        # Filtra los programas usando las palabras clave y almacena en programas_filtrados
+        programas_filtrados = gestor_datos.buscar_por_palabras_clave(palabras_clave, dataframes)
         st.sidebar.write(f"Programas encontrados: {len(programas_filtrados)}")
     except KeyError as e:
-        # Muestra un mensaje de error si hay un problema con la palabra clave
+        # Muestra un mensaje de error si hay un problema con las palabras clave
         st.error(f"Error: {e}")
 
-# Mensaje de advertencia si no se encuentran programas con la palabra clave proporcionada
+# Mensaje de advertencia si no se encuentran programas con las palabras clave proporcionadas
 if programas_filtrados.empty:
-    st.warning("No se encontraron programas con la palabra clave proporcionada.")
+    st.warning("No se encontraron programas con las palabras clave proporcionadas.")
 else:
     # Widget de selección múltiple para seleccionar programas para el análisis
     programas_seleccionados = st.multiselect(
@@ -81,6 +89,7 @@ else:
 
 # DataFrame para almacenar los resultados del análisis
 resultados = pd.DataFrame()
+
 
 # Si se seleccionan programas, realiza el análisis
 if programas_seleccionados:

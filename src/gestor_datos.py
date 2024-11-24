@@ -216,27 +216,36 @@ class GestorDatos:
             for column in df.columns:
                 print(f"- {column}")
 
-    def buscar_por_palabra_clave(self, palabra_clave, dataframes):
+    def buscar_por_palabras_clave(self, palabras_clave, dataframes):
         """
-        Busca programas académicos por palabra clave en los DataFrames cargados.
+        Busca programas académicos que incluyan alguna de las palabras clave proporcionadas.
 
         Parámetros
         ----------
-        palabra_clave : str
-            Palabra clave para buscar en los programas académicos.
+        palabras_clave : list
+            Lista de palabras clave para buscar en los programas académicos.
         dataframes : dict
             Diccionario de DataFrames cargados.
 
         Devuelve
         -------
         DataFrame
-            DataFrame con los programas académicos que coinciden con la palabra clave.
+            DataFrame con los programas académicos que coinciden con alguna palabra clave.
+
+        Lanza
+        -----
+        KeyError
+            Si la columna 'programa_academico' no está presente en los datos.
         """
-        datos_combinados = pd.concat(dataframes.values(), ignore_index=True)
+    # Combina todos los DataFrames cargados
+    datos_combinados = pd.concat(dataframes.values(), ignore_index=True)
 
-        if 'programa_academico' not in datos_combinados.columns:
-            raise KeyError("La columna 'programa_academico' no se encuentra en los datos.")
+    # Verifica que la columna 'programa_academico' exista
+    if 'programa_academico' not in datos_combinados.columns:
+        raise KeyError("La columna 'programa_academico' no se encuentra en los datos.")
 
-        programas_filtrados = datos_combinados[datos_combinados['programa_academico']
-        .str.contains(palabra_clave, case=False, na=False)]
-        return programas_filtrados
+    # Crea el filtro con las palabras clave
+    filtro = datos_combinados['programa_academico'].str.contains('|'.join(palabras_clave), case=False, na=False)
+
+    # Filtra los datos y retorna el resultado
+    return datos_combinados[filtro]
